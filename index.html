@@ -5,34 +5,70 @@
 	<title></title>
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
-
 <style type="text/css">
-	body{
+*{
+	margin: 0;
+	padding: 0;
+}
+	.contener{
+		height: 100%;
+		width: 100%;
 		background-color: rgba(2, 225, 139, 1.0);
-
+		background-position: center;
+		background-size: cover;
+		position: absolute;
 	}
 	.main{
-		margin-top:80px;
-		padding: 50px;
-		background-color:#666;
-		height: 500px;
-		border-radius: 35px;
+		width: 380px;
+		height: 480px;
+		position: relative;
+		margin: 5% auto;
+		background: #666;
+		padding: 10px 50px;
+		border-radius: 20px;
+		overflow: hidden;
 	}
-	label{
+	.button_box{
+		width: 250px;
+		margin: 30px auto;
+		background-color: #fff;
+		position: relative;
+		box-shadow: 0 0 28px 1px rgba(2, 225, 139, 0.5);
+		border-radius: 20px;
+		text-align: center;
+	}
+	.toggle_btn{
   		font-weight: bold;
-		color: rgba(2, 225, 139, 1.0);
-		margin-top: 10px;
-		margin-bottom: 5px;
+		color: #666;
+		padding: 10px 30px;
+		cursor: pointer;
+		background: transparent;
+		border: 0;
+		outline: none;
+		position: relative;
 	}
+	#btn{
+		top: 0;
+		left: 0;
+		position: absolute;
+		width: 125px;
+		height: 100%;
+		background: linear-gradient( to right,rgba(2, 225, 139, 0.2),rgba(2, 225, 139, 0.8),rgba(2, 225, 139, 0.8),rgba(2, 225, 139, 0.2));
+		border-radius: 20px;
+		transition: 0.5s;
+	}
+
+	/*form*/
+
 	.heading{
   		font-weight: bold;
 		margin-top: -10px;
-  		font-size: 30px;
+  		font-size: 38px;
   		text-align: center;
 		color: rgba(2, 225, 139, 1.0);
 	}
 	.btn_style{
-		margin-top: 15px;
+		margin-top: 20px;
   		font-weight: bold;
 		color: rgba(2, 225, 139, 1.0);
 	}
@@ -40,14 +76,62 @@
 		background-color: rgba(2, 225, 139, 0.9);
 		border-color: rgba(2, 225, 139, 1.0);
 	}
+	label{
+  		/*font-weight: bold;*/
+  		font-size: 18px;
+		color: rgba(2, 225, 139, 1.0);
+		margin-top: 10px;
+		margin-bottom: 5px;
+	}
+	.form-control{
+		border-radius: 15px;
 
+	}
+	.form-check-input{
+		margin-top: 15px;
+	}
+	#log_in{
+		width: 250px;
+		transition: 0.3s;
+		position: absolute;
+		left: 60px;
+	}
+	#sign_up{
+		width: 250px;
+		transition: 0.3s;
+		position: absolute;
+		left: 385px;
+
+	}
 </style>
 </head>
 <body>
-<div class="container">
-	<div class="row">
-		<div class="offset-lg-3 col-lg-6 offset-md-2 col-md-8">
-			<div class="main">
+	<div class="contener">
+		<div class="main">
+			<div class="button_box">
+				<div id="btn"></div>
+				<button type="button" class="toggle_btn" onclick="logIn()">Log In</button>
+				<button type="button" class="toggle_btn" onclick="signUp()">Sign Up</button>
+			</div>
+			<div id="log_in">
+				<form>
+					<p class="heading">Log In
+				  <div class="form-group">
+				    <label for="exampleInputEmail1">Email address</label>
+				    <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email">
+				  </div>
+				  <div class="form-group">
+				    <label for="exampleInputPassword1">Password</label>
+				    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+				  </div>
+				  <div class="form-group form-check">
+				    <input type="checkbox" class="form-check-input" id="exampleCheck1">
+				    <label class="form-check-label" for="exampleCheck1">Remember me</label>
+				  </div>
+					<button type="button" class="btn btn-light btn_style">Log In</button>
+				</form>
+			</div>
+			<div id="sign_up">
 				<form>
 					<p class="heading">Sign Up
 				  <div class="form-group">
@@ -58,11 +142,32 @@
 				    <label for="exampleInputPassword1">Password</label>
 				    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
 				  </div>
-					<button type="button" class="btn btn-light btn_style">Submit</button>
+				  <div class="form-group form-check">
+				    <input type="checkbox" class="form-check-input" id="exampleCheck1">
+				    <label class="form-check-label" for="exampleCheck1">I agree to Term & Condition</label>
+				  </div>
+					<button type="button" class="btn btn-light btn_style">Sign Up</button>
 				</form>
 			</div>
 		</div>
 	</div>
-</div>
+	<script type="text/javascript">
+		var x = document.getElementById("log_in");
+		var y = document.getElementById("sign_up");
+		var z = document.getElementById("btn");
+
+		function signUp() {
+			x.style.left = "-400px";
+			y.style.left = "60px";
+			z.style.left = "125px";
+		}
+
+		function logIn() {
+			x.style.left = "60px";
+			y.style.left = "400px";
+			z.style.left = "0";
+		}
+
+	</script>
 </body>
 </html>
